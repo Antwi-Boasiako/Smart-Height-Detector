@@ -65,27 +65,12 @@ void sendHeightInCm() {
 
 }
 
-void sendHeightInMeter() {
-  // Sending height as a response
-  server.send(200, "text/plain", meterstring);
- Serial.println("Sent height in meters is: ");
- Serial.println(meterstring);
-}
-void sendHeightInFeet() {
-  // Sending height as a response
-  server.send(200, "text/plain", feetstring);
- Serial.println("Sent height in feet is: ");
- Serial.println(feetstring);
-}
-
-
 // Send request fails
 void requestFailed(){
     // Sending failed response
     server.send(403,"text/plain", "No height recorded");
     Serial.println("Request failed");
   }
-
 
 
 void setup(void) {
@@ -169,14 +154,12 @@ distance =220-first_distance;
 //float f = 1.23456678;
 
 //s=convertFloatToString(f);
-
  centistring =convertFloatToString(distance);
  meterstring=convertFloatToString(distanceinmeters);
  feetstring=convertFloatToString(distancefeet);
  Data = centistring+","+meterstring+","+feetstring;
  
- delay(20000);
+ //delay(2);
 
-  
   server.handleClient();
 }
