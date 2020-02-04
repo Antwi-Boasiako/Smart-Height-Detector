@@ -80,7 +80,7 @@ void setup(void) {
   lcd.begin();
 
   // Turn on the blacklight and print a message.
-  lcd.backlight();
+ lcd.backlight();
  pinMode(trigger,OUTPUT);
  pinMode(echo,INPUT);
  lcd.setCursor(0,0);
@@ -128,10 +128,13 @@ void loop(void) {
  digitalWrite(trigger,HIGH);
  delayMicroseconds(10);
  digitalWrite(trigger,LOW);
+
+ 
  delayMicroseconds(2);
  timeone=pulseIn(echo,HIGH);
  first_distance=timeone*340/20000;
-distance =220-first_distance;
+ distance =220-first_distance;
+
  Serial.println("Sensor Values");
  lcd.clear();
  lcd.print("Dis:");
@@ -159,7 +162,8 @@ distance =220-first_distance;
  feetstring=convertFloatToString(distancefeet);
  Data = centistring+","+meterstring+","+feetstring;
  
- //delay(2);
+ //delay(20000);
+
 
   server.handleClient();
 }
